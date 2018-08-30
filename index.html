@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuck Norris Favs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+  <link href="loading.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="loading style-2" v-if="loading">
+      <div class="loading-wheel"></div>
+    </div>
+
+    <div class="quotes" id="quotes">
+      <span class="title">Chuck Norris Quotes (Click to favorite)</span>
+
+      <button @click="loadMore()">Load More</button>
+
+      <button v-if="!timerId" @click="startTimer()">Start Timer</button>
+      <button v-if="timerId" @click="stopTimer()">Stop Timer</button>
+
+      <ol>
+        <li v-for="quote in quotes" class="quote" @click="add(quote)">
+          {{ quote.joke }}
+        </li>
+      </ol>
+    </div>
+    <div class="favs" id="favs">
+      <span class="title">Favorite Quotes (Click to remove)</span>
+      <ol>
+        <li v-for="quote in favs" class="quote" @click="remove(quote)">
+          {{ quote.joke }}
+        </li>
+      </ol>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
